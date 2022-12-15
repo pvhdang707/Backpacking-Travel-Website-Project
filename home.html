@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.fontspace.com/cassandra-font-f29711">
+    <!-- Tìm icon: https://fontawesome.com/icons/cloudflare?s=solid&f=brands -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>BACKPACKING TRAVEL WEBSITE</title>
+</head>
+<body>
+    <header>
+
+        <a  href="./home.html" id="logo">BackTravel</a>
+
+        <nav id="navbar">
+            <a href="" class="navHome">
+                Home
+            </a>
+            <a href="./book.html" class="navBook">
+                Book
+            </a>
+            <a href="" class="navBlog">
+                Blog
+            </a>
+
+        </nav>
+        <div class="searchAndLogin">
+            <div class="search">
+                <input type="search" class="search-bar" placeholder="Tìm kiếm địa điểm">
+                <label for="search-bar" class="fas fa-search"></label>
+            </div>
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+    </header>
+
+
+    <div id="slider">
+        <div class="slide active">
+            <img src="./assets/images/slide1.jpeg" alt="">
+            <div class="info">
+                <p>Hành trình vạn dặm bắt đầu từ một bước chân</p>
+                <h2>Lão Tử</h2>
+
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/images/slide2.jpg" alt="">
+            <div class="info">
+                <p>Du lịch chính là được sống</p>
+                <h2>Hans Christian Andersen</h2>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/images/slide3.jpg" alt="">
+            <div class="info">
+                <p>Khách du lịch không biết nơi nào họ từng đến, kẻ lữ hành không biết nơi nào họ sắp đến</p>
+                <h2>Paul Theroux</h2>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/images/slide4.jpg" alt="">
+            <div class="info">
+                <p>Chỉ có người lang thang mới tìm ra những con đường mới</p>
+                <h2>Tục ngữ Na Uy</h2>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="./assets/images/slide5.jpg" alt="">
+            <div class="info">
+                <p>Đi càng xa, tôi càng tiến gần đến bản thân mình</p>
+                <h2>Andrew McCarthy</h2>
+            </div>
+        </div>
+        <div class="navSlider">
+            <i class="fas fa-chevron-left prev-btn"></i>
+            <i class="fas fa-chevron-right next-btn"></i>
+        </div>
+        <div class="navigation-visibility">
+            <div class="slide-icon active"></div>
+            <div class="slide-icon"></div>
+            <div class="slide-icon"></div>
+            <div class="slide-icon"></div>
+            <div class="slide-icon"></div>
+        </div>
+    </div>
+
+    <div id="tabs">
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks tabActive" onclick="openTab(event, 'Place')">Địa điểm</button>
+            <button class="tablinks" onclick="openTab(event, 'Flight')">Vé máy bay</button>
+            <button class="tablinks" onclick="openTab(event, 'Hotel')">Phòng khách sạn</button>
+            <button class="tablinks" onclick="openTab(event, 'Tour')">Tour</button>
+        </div>
+        
+        <!-- Tab content -->
+        <div id="Place" class="tabcontent tabActive">
+            <input type="search" class="search-bar" placeholder="Tìm kiếm địa điểm">
+            <button class="Btn">Tìm kiếm</button>
+        </div>
+        
+        <div id="Flight" class="tabcontent">
+
+            <div class="row">
+                <div class="colume">
+                    <input type="radio" class="oneWay" name="typeTicket" value="OneWay">
+                    <label for="oneWay">Một chiều</label>
+                    <input type="radio" class="roundTrip" name="typeTicket" value="RoundTrip">
+                    <label for="roundTrip">Khứ hồi</label>
+                </div>
+                
+                
+            </div>
+
+            <div class="row">
+                <div class="colume">
+                    <h5> Từ </h5>
+                    <input type="text" placeholder="Từ">
+                </div>
+                    
+                <div class="colume">
+                    <h5> Đến </h5>
+                    <input type="text" placeholder="Đến">
+                </div>
+                    
+
+            </div>
+            <div class="row">
+                <div class="colume">
+                    <h5> Ngày đi</h5>
+                    <input class="glyphicon glyphicon-calendar" type="date" placeholder="mm/dd/yyyy">
+                </div>
+                
+                <div class="colume">
+                    <h5> Ngày về </h5>
+                    <input class="glyphicon glyphicon-calendar" type="date" placeholder="mm/dd/yyyy">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="colume">
+                    <h5> Số người lớn </h5>
+                    <input type="number" name="points" min="0" max="100" step="10" value="1">
+                </div>
+                
+                <div class="colume">
+                    <h5> Số trẻ em </h5>
+                    <input type="number" name="points" min="0" max="100" step="10" value="0">
+                </div>
+
+                
+            </div>
+            <div class="row">
+                <div class="colume">
+                    <label for="sel1">Hạng ghế</label>
+                    <select class="form-control" id="sel1">
+                        <option>Hạng nhất</option>
+                        <option>Thương gia</option>
+                        <option>Phổ thông</option>
+                    </select>
+                    <label class="checkbox-inline"><input type="checkbox" value="">Bữa ăn</label>
+                    <label class="checkbox-inline"><input type="checkbox" value="">Wifi</label>
+                </div>
+
+                
+            </div>
+            <div class="row findBtn">
+                <button type="button" class="Btn">Tìm kiếm </button>
+            </div>
+            
+            
+        </div>
+        
+        <div id="Hotel" class="tabcontent">
+            
+        </div>
+
+        <div id="Tour" class="tabcontent">
+            
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
