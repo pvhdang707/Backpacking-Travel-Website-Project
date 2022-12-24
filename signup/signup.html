@@ -1,0 +1,151 @@
+<!--web đăng kí -->
+<!DOCTYPE <html>
+<html lang="vn">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="signup-wrapper shadow-box">
+            <div class="company-details ">
+                <div class="shadow"></div>
+                <div class="wrapper-1">
+                    <div class="logo">
+                        <i class = "fa fa-plane"></i>
+                    </div>
+                    <h1 class="title">Backpacking Travel Website</h1>
+                    <div class="slogan">by team 25 FIT@HCMUS</div>
+                </div>
+                    
+            </div>
+            <div class="signup-form">
+                <div class="wrapper-2">
+                    <div class="title">ĐĂNG KÍ</div>
+                    <div class="form" >
+                        <form name="form1">
+                            <div class="content-item">
+                                <label class = "col-half">Họ
+                                    <input type="text" placeholder = "Nguyễn" name="fname" required>
+                                </label>
+                                <label class = "col-half">Tên
+                                    <input type="text" placeholder = "Văn A" name="lname" required>
+                                </label>
+                                
+                            </div>
+                            <div class="content-item">
+                                <label>Email
+                                    <input type="text" placeholder = "name@example.com" name="email" required>
+                                </label>
+                            </div>
+                            <div class="content-item">
+                                <label>Mật khẩu
+                                    <input type="password" placeholder = "*******" name="psw" required>
+                                </label>
+                            </div>
+                            <div class="content-item">
+                                <label>Xác nhận mật khẩu
+                                    <input type="password" placeholder = "*******" name="cfpsw" required>
+                                </label>
+                            </div>
+                            <button type="submit" class="signup" onclick="return checkForm()">Đăng kí</button>
+                            
+                            <a href="../signin/signin.html" class="login">Đã có tài khoản? Đăng nhập</a>
+                            <h id="baoloi"></h>
+                            <ul id="user_list"></ul>
+                        </form>
+                 
+                    </div>
+                </div>      
+            </div> 
+        </div>
+    </div>
+</div>
+<script>
+    function checkForm() {
+        //kiem tra cac truong du lieu co duoc nhap hay khong
+        var loi="";
+        var fname= document.form.fname.value;
+        var lname= document.form.lname.value;
+        var email= document.form.email.value;
+        var password= document.form.psw.value;
+        var cfpassword= document.form.cfpsw.value;
+        if(fname==""||lname==""||email==""||password==""||cfpassword==""){
+            //alert("Bạn chưa nhập đủ thông tin");
+            loi +="Vui lòng nhập đầy đủ thông tin <br>";
+        }
+        else
+        {
+            //kiem tra độ dài password
+            var password= document.form.psw.value;
+            if(password.length<6){
+                //alert("Mật khẩu phải có ít nhất 6 ký tự");
+                loi +="_Mật khẩu không hợp lệ: phải có ít nhất 6 ký tự <br>";
+            }
+            //kiem tra password va confirm password
+            var loi="";
+            var password= document.form.psw.value;
+            var cfpassword= document.form.cfpsw.value;
+            if(password!=cfpassword){
+                //alert("Mật khẩu không khớp");
+                loi +="_Mật khẩu không khớp: mật khẩu và xác nhận mật khẩu phải giống nhau <br>";
+            }
+            //kiem tra dinh dang email co hop le khong
+            var email= document.form.email.value;
+            var atposition=email.indexOf("@");
+            var dotposition=email.lastIndexOf(".");
+            var regExp = /^[A-Za-z][\w$.]+@[\w]+\.\w+$/;
+            if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length||regExp.test(email) == false){
+                //alert("Email không hợp lệ");
+                loi +="_Email không hợp lệ: không chứa ký tự đặc biệt, không có khoảng trắng, phải có dấu @ và dấu . <br>";
+            }
+        }
+       if(loi!="")
+         {
+              document.getElementById("baoloi").innerHTML=loi;
+              return false;
+         }
+         else
+         {
+              return true;
+         }
+
+    }
+</script>
+    <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";// TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyD__YeVgKcEc3zUNxvWGUQJ8f4gd5PE6v0",
+      authDomain: "db-backpackingtravelwebsite.firebaseapp.com",
+      projectId: "db-backpackingtravelwebsite",
+      storageBucket: "db-backpackingtravelwebsite.appspot.com",
+      messagingSenderId: "42790091788",
+      appId: "1:42790091788:web:117b60225f7133048dc229",
+      measurementId: "G-W79J324Q6W"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    export const db = getFirestore(app);
+
+    //firebase.initializeApp(firebaseConfig);
+    //export const db = firebase.firestore();
+    //db.setting({timestampsInSnapshots: true});
+    //const app = initializeApp(firebaseConfig);
+    //const analytics = getAnalytics(app);
+  </script>
+
+</body>
+</html>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">

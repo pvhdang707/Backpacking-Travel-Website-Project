@@ -1,0 +1,100 @@
+<!--web đăng kí -->
+<!DOCTYPE <html>
+<html lang="vn">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="signup-wrapper shadow-box">
+            <div class="company-details ">
+                <div class="shadow"></div>
+                <div class="wrapper-1">
+                    <div class="logo">
+                        <i class = "fa fa-plane"></i>
+                    </div>
+                    <h1 class="title">Backpacking Travel Website</h1>
+                    <div class="slogan">by team 25 FIT@HCMUS</div>
+                </div>
+                    
+            </div>
+            <div class="signup-form">
+                <div class="wrapper-2">
+                    <div class="title">ĐĂNG NHẬP</div>
+                    <div class="form">
+                        <form name="form">
+                            <div class="content-item">
+                                <label>Email
+                                    <input type="text" placeholder = "name@example.com" name="email" required>
+                                </label>
+                            </div>
+                            <div class="content-item">
+                                <label>Mật khẩu
+                                    <input type="password" placeholder = "*******" name="psw" required>
+                                </label>
+                            </div>
+                            <label class="remember-pass"><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
+                            <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+                            <button type="submit" class="signup" onclick="return checkForm()">Đăng nhập</button>
+                            
+                            <a href="../signup/signup.html" class="login">Chưa có tài khoản? Đăng kí</a>
+                            <h id="baoloi"></h>
+                        </form>
+                 
+                    </div>
+                </div>      
+            </div> 
+        </div>
+    </div>
+</div>
+<script>
+    function checkForm() {
+        var loi="";
+       //kiem tra cac truong du lieu co duoc nhap hay khong
+        var email = document.form.email.value;
+        var psw = document.form.psw.value;
+        if (email == ""|| psw == "") {
+            loi = "Vui lòng nhập đầy đủ thông tin";
+            document.getElementById("baoloi").innerHTML = loi;
+           
+        }
+        else
+        {
+            //kiem tra độ dài password
+            var password= document.form.psw.value;
+            if(password.length<6){
+                //alert("Mật khẩu phải có ít nhất 6 ký tự");
+                loi +="_Mật khẩu không hợp lệ: phải có ít nhất 6 ký tự <br>";
+            }
+            //kiem tra dinh dang email co hop le khong
+            var email= document.form.email.value;
+            var atposition=email.indexOf("@");
+            var dotposition=email.lastIndexOf(".");
+            var regExp = /^[A-Za-z][\w$.]+@[\w]+\.\w+$/;
+            if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length||regExp.test(email) == false){
+                //alert("Email không hợp lệ");
+                loi +="_Email không hợp lệ: không chứa ký tự đặc biệt, không có khoảng trắng, phải có dấu @ và dấu . <br>";
+            }
+        }
+       if(loi!="")
+         {
+              document.getElementById("baoloi").innerHTML=loi;
+              return false;
+         }
+         else
+         {
+              return true;
+         }
+           
+    }
+</script>
+</body>
+</html>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<!--lấy script từ file js-->
+<script src="./script.js"></script>
